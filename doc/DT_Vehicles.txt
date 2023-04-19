@@ -1,0 +1,118 @@
+CREATE TABLE dbo.DT_Vehicles
+(
+    VehicleNumber int NOT NULL
+        CONSTRAINT PK_DT_Vehicles
+            PRIMARY KEY NONCLUSTERED,
+    Property bit NOT NULL,
+    Owner nvarchar(40),
+    RegistrationDate smalldatetime,
+    ChassisNumber varchar(250),
+    Brand int NOT NULL,
+    Model int NOT NULL,
+    Version int,
+    ManufactureYear smallint,
+    ManufactureMonth tinyint,
+    Category tinyint,
+    Displacement nvarchar(10),
+    FuelType int,
+    TankCapacity int,
+    Color int,
+    SpecialNotes nvarchar(20),
+    AcquisitionDate smalldatetime,
+    AcquisitionValue float,
+    AcquisitionLocation nvarchar(50),
+    SaleDate smalldatetime,
+    SaleValue float,
+    SaleEntity nvarchar(50),
+    SaleTaxID nvarchar(15),
+    SaleAddress varchar(500),
+    Group int,
+    Kilometers int,
+    Inspection smalldatetime,
+    MaintenancePeriod int,
+    MaintenanceKilometers int,
+    Status int NOT NULL,
+    Notes ntext,
+    SalesCounter int NOT NULL,
+    Power smallint,
+    EquipmentTypeID int,
+    Rental bit,
+    Turbo bit,
+    ArticleID int,
+    AreaID int,
+    LicensePlate nvarchar(40) NOT NULL,
+    WarrantyEndDate smalldatetime,
+    InsuranceCategoryID int,
+    NumberOfGears smallint,
+    SupplierID int,
+    ParentVehicleNumber int,
+    Description2 nvarchar(30),
+    Description1 nvarchar(20),
+    Description3 nvarchar(30),
+    Description4 nvarchar(30),
+    Date1 smalldatetime,
+    Account int,
+    AccountingDate smalldatetime,
+    ForDistribution bit,
+    SubGroup1 int,
+    SubGroup2 int,
+    SubGroup3 int,
+    DriverID int,
+    Capacity float,
+    NumberOfDoors float,
+    Length float,
+    Height float,
+    Width float,
+    Volume float,
+    Tare float,
+    GrossWeight float,
+    AmortizationPercentage float,
+    StartingLocationID int,
+    DestinationLocationID int,
+    MaintenanceArticleID int,
+    TransportArticleID int,
+    Hours int,
+    MaxKilometersDigits int,
+    MaxHoursDigits int,
+    AverageKilometers float,
+    AverageHours float,
+    SecondaryMaintenanceArticleID int,
+    WarehouseID int
+)
+
+CREATE INDEX IX_DT_Vehicles_LicensePlate
+    ON dbo.DT_Vehicles (LicensePlate, VehicleNumber)
+
+CREATE INDEX IX_DT_Vehicles_ChassisNumber
+    ON dbo.DT_Vehicles (ChassisNumber)
+
+CREATE INDEX IX_DT_Vehicles_Brand
+    ON dbo.DT_Vehicles (Brand)
+
+CREATE INDEX IX_DT_Vehicles_Status
+    ON dbo.DT_Vehicles (Status)
+
+CREATE INDEX IX_DT_Vehicles_Model
+    ON dbo.DT_Vehicles (Model)
+
+CREATE INDEX IX_DT_Vehicles_Group
+    ON dbo.DT_Vehicles (Group)
+
+CREATE INDEX IX_DT_Vehicles_SalesCounter
+    ON dbo.DT_Vehicles (SalesCounter)
+
+CREATE INDEX IX_DT_Vehicles_EquipmentTypeID
+    ON dbo.DT_Vehicles (EquipmentTypeID)
+
+CREATE INDEX IX_DT_Vehicles_Rental
+    ON dbo.DT_Vehicles (Rental)
+
+CREATE INDEX IX_DT_Vehicles_ForDistribution
+    ON dbo.DT_Vehicles (ForDistribution)
+
+CREATE INDEX IX_DT_Vehicles_WarehouseID
+    ON dbo.DT_Vehicles (WarehouseID)
+
+CREATE INDEX IX_DT_Vehicles_Category
+    ON dbo.DT_Vehicles (Category)
+    INCLUDE (VehicleNumber, LicensePlate)

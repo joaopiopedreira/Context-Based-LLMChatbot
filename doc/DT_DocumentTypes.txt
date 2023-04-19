@@ -1,0 +1,70 @@
+CREATE TABLE dbo.DT_DocumentTypes
+(
+	DocumentTypeId tinyint NOT NULL CONSTRAINT PK_DocumentTypes PRIMARY KEY NONCLUSTERED,
+	DocumentType nvarchar(20) NOT NULL,
+	DocumentDescription nvarchar(20) NOT NULL,
+	Abbreviation nvarchar(3) NOT NULL,
+	IsReceipt bit NOT NULL,
+	HasMovementInAccount int NOT NULL,
+	HasRevenueMovements int NOT NULL,
+	IsAdjustment bit NOT NULL,
+	HasStockMovement int,
+	IsPurchase bit,
+	IsSale bit,
+	IsMovementGuide bit,
+	AccountingApplication nvarchar(20),
+	AccountingJournal nvarchar(20),
+	AccountingDoc nvarchar(10),
+	UsesAccounts bit,
+	MovementInAccount smallint,
+	ExternalReference nvarchar(100),
+	IsScheduled bit NOT NULL,
+	HasLetter bit NOT NULL,
+	HasCounterSaleValue bit NOT NULL,
+	UsesDistribution bit NOT NULL,
+	HasSeries bit NOT NULL,
+	HasAccounting bit NOT NULL,
+	RequiresMonthValidation bit NOT NULL,
+	RequiresDataIntegrity bit NOT NULL,
+	DefaultPredefinedAccounting nvarchar(50),
+	DefaultPredefinedAccountingAdvance nvarchar(50),
+	DefaultRetentionAccounting nvarchar(50),
+	IsActive bit NOT NULL,
+	HasReturnReason bit,
+	HasInvoiceForAllMovements bit NOT NULL,
+	HasExtraCharge bit NOT NULL,
+	VATCalculationType int,
+	ShowsOrderOnScreen bit NOT NULL,
+	RequiresRequest bit NOT NULL,
+	DistributionTypeId int,
+	DecimalPlaces int,
+	RequiresCreditValidation bit NOT NULL,
+	RequiresBlockingValidation bit NOT NULL,
+	RequiresCancellationReason bit NOT NULL,
+	IsSaftEnabled bit NOT NULL,
+	SaftDocumentType nvarchar(100),
+	DefaultEmailMessage nvarchar(max),
+	LocksOrders bit DEFAULT 0 NOT NULL,
+	ReschedulesPeriodicalDate bit DEFAULT 0 NOT NULL,
+	HasOrderAlert bit
+)
+
+CREATE CLUSTERED INDEX IX_DocumentTypes_DocumentType 
+ON dbo.DocumentTypes(DocumentType)
+INCLUDE(DocumentTypeId, Abbreviation)
+GO
+
+CREATE NONCLUSTERED INDEX IX_DocumentTypes_IsActive 
+ON dbo.DocumentTypes(IsActive)
+INCLUDE(DocumentType, Abbreviation)
+GO
+
+CREATE NONCLUSTERED INDEX IX_DocumentTypes_IsPurchase 
+ON dbo.DocumentTypes(IsPurchase)
+INCLUDE(DocumentType, Abbreviation)
+GO
+
+CREATE NONCLUSTERED INDEX IX_DocumentTypes_IsSale 
+ON dbo.DocumentTypes(IsSale)
+INCLUDE(DocumentType, Abbreviation)
+GO

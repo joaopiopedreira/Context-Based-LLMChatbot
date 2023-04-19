@@ -1,0 +1,8 @@
+CREATE TABLE dbo.TB_DistributionTypes
+(
+    DistributionTypeId INT NOT NULL
+        CONSTRAINT PK_TB_DistributionTypes PRIMARY KEY,
+    DistributionType NVARCHAR(50) NOT NULL,
+    IsDefault BIT NOT NULL
+)
+GO

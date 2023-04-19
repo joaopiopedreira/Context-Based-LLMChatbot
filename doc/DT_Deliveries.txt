@@ -1,0 +1,204 @@
+create table dbo.DT_Deliveries
+(
+DocumentID int not null,
+Number nvarchar(50),
+idOwner int not null,
+DepotID int not null,
+EntityID int,
+DocumentTypeID tinyint not null,
+ContractID int,
+PONumber nvarchar(100),
+Date smalldatetime not null,
+DueDate smalldatetime,
+PaymentDate smalldatetime,
+VATNumber nvarchar(15),
+Name nvarchar(100),
+Contact nvarchar(50),
+City nvarchar(50),
+PostalCity nvarchar(50),
+TotalNetValue float not null,
+TotalDiscounts float not null,
+SubTotal float not null,
+TotalVAT float not null,
+Total float not null,
+ValueToRegulate float not null,
+SellerID int,
+Observations varchar(8000),
+CurrencyID int not null,
+ExchangeRate float not null,
+Paid bit not null,
+Canceled bit not null,
+Closed bit not null,
+Receipt bit not null,
+AccountID int,
+PaymentMethod int,
+PaymentDocumentNumber nvarchar(50),
+Printed bit,
+AffectsStock bit,
+Delivered bit,
+AccountMovementID int,
+DeliveryDate smalldatetime,
+DeliveryAddressID int,
+DeliveryVehicleID int,
+DeliveryZoneID int,
+AreaID int,
+FinancialDiscountPercentage float,
+FinancialDiscount float,
+TotalNetValueInBaseCurrency float,
+TotalDiscountsInBaseCurrency float,
+SubTotalInBaseCurrency float,
+TotalVATInBaseCurrency float,
+TotalInBaseCurrency float,
+ValueToRegulateInBaseCurrency float,
+FinancialDiscountInBaseCurrency float,
+Address nvarchar(255),
+TotalCost float,
+Margin float,
+Accounting int,
+AccountingDate smalldatetime,
+DepartmentID int,
+BankID int,
+Dependency nvarchar(50),
+MaintenanceID int,
+OpeningUserID int,
+OpeningDate smalldatetime,
+LastUpdateUserID int,
+LastUpdateDate smalldatetime,
+DeliveryDueDate smalldatetime,
+OnRoute bit,
+Weight float,
+Volume float,
+Deposit float,
+Clean bit,
+Charges bit,
+Load float,
+EstimatedTime float,
+RoundTripNumber int,
+RouteOrderNumber int,
+Resource bit,
+CreditInsurance bit,
+Factoring bit,
+MachinesQuantity float,
+DriverID int,
+Signed bit,
+DeliveryDelay bit,
+Automatic bit,
+Deposited bit not null,
+Department nvarchar(100),
+Address2 nvarchar(100),
+PostalBox nvarchar(100),
+AddressID int,
+CallID int,
+Historical int not null
+constraint CK_TB_SalesGuides_Active
+check ([Historical] = 0),
+StatusID int,
+DeliveryPriority nvarchar(100),
+BillingProcessID int,
+SecondDriverID int,
+WarehouseID int not null,
+VATSurcharge float not null,
+HasVATSurcharge bit not null,
+VisitWithoutEffectReasonID int,
+CancellationReasonID int,
+SeriesID int,
+Locked bit default 0 not null,
+EventID int,
+SDDAuthorizationID int,
+ToSendDate smalldatetime,
+constraint PK_TB_SalesGuides_Active
+primary key (DocumentID, Historical)
+)
+go
+
+create index IX_DT_Deliveries_WarehouseID
+on dbo.DT_Deliveries (WarehouseID)
+go
+
+create index IX_DT_Deliveries_DataValidation
+on dbo.DT_Deliveries (Date, Number, AreaID, DocType, idOwner)
+go
+
+create index IX_DT_Deliveries_DeliveryAddressID
+on dbo.DT_Deliveries (DeliveryAddressID)
+go
+
+create index IX_DT_Deliveries_RouteOrderNumber
+on dbo.DT_Deliveries (RouteOrderNumber)
+go
+
+create index IX_DT_Deliveries_DriverID
+on dbo.DT_Deliveries (DriverID)
+go
+
+create index IX_DT_Deliveries_DepotID
+on dbo.DT_Deliveries (DepotID)
+go
+
+create index IX_DT_Deliveries_idOwner
+on dbo.DT_Deliveries (idOwner)
+go
+
+create index IX_DT_Deliveries_EntityID
+on dbo.DT_Deliveries (EntityID)
+go
+
+create index IX_DT_Deliveries_DocType
+on dbo.DT_Deliveries (DocType)
+go
+
+create index IX_DT_Deliveries_DeliveryDate
+on dbo.DT_Deliveries (DeliveryDate)
+go
+
+create index IX_DT_Deliveries_DeliveryDate
+on dbo.DT_Deliveries (DeliveryDate)
+go
+
+create index IX_DT_Deliveries_DeliveryVehicleID
+on dbo.DT_Deliveries (DeliveryVehicleID)
+go
+
+create index IX_DT_Deliveries_Delivered
+on dbo.DT_Deliveries (Delivered)
+go
+
+create index IX_DT_Deliveries_DeliveryZoneID
+on dbo.DT_Deliveries (DeliveryZoneID)
+go
+
+create index IX_DT_Deliveries_ContractID
+on dbo.DT_Deliveries (ContractID)
+go
+
+create index IX_DT_Deliveries_AreaID
+on dbo.DT_Deliveries (AreaID)
+go
+
+create index IX_DT_Deliveries_SeriesID
+on dbo.DT_Deliveries (SeriesID)
+go
+
+create index IX_DT_Deliveries_Canceled
+on dbo.DT_Deliveries (Canceled)
+go
+
+create index IX_DT_Deliveries_Paid
+on dbo.DT_Deliveries (Paid)
+go
+
+create index IX_DT_Deliveries_Number
+on dbo.DT_Deliveries (Number)
+go
+
+create index IX_DT_Deliveries_StatusID
+on dbo.DT_Deliveries (StatusID)
+go
+
+create index IX_DT_Deliveries_Fechado
+on dbo.DT_Deliveries (Closed)
+go
+
+create index IX_DT_Deliveries_PaymentDate
+on dbo.DT_Deliveries (PaymentDate)
+go
