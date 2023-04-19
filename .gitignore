@@ -1,0 +1,9 @@
+.chroma
+/demo
+/doc
+.idea
+/img
+/logs
+/vectorstore
+/venv
+.env
