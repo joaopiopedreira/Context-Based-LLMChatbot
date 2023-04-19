@@ -22,7 +22,7 @@ logging.basicConfig(
 LOGGER = logging.getLogger(__name__)
 
 # Load documents from the specified directory using a DirectoryLoader object
-loader = DirectoryLoader(config.FILE_DIR, glob='*.pdf')
+loader = DirectoryLoader(config.FILE_DIR, glob='*.txt')
 documents = loader.load()
 
 # split the text to chuncks of of size 1000
